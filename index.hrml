@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Bagabas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="card">
+        <h1>Hello, World! 👋</h1>
+        <p>I'm <strong>Ali Bagabas</strong>.</p>
+        <p>This site is live on AWS (S3, CloudFront, ACM, & Route 53).</p>
+    </main>
+</body>
+</html>
