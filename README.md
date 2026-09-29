@@ -4,7 +4,7 @@
 
 A production-ready, highly secure, and cost-effective static website infrastructure hosted on AWS. The platform utilizes **Amazon S3**, **Amazon CloudFront**, **AWS Certificate Manager (ACM)**, and **Amazon Route 53**, integrated with an external **.sa** country-code domain registrar.
 
-👉 **Live Demo:** [https://ali-bagabas.sa](https://www.google.com/search?q=https://ali-bagabas.sa)
+👉 **Live Demo:** [https://ali-bagabas.sa]((https://ali-bagabas.sa))
 
 ---
 
@@ -41,11 +41,11 @@ The system architecture follows strict zero-trust storage principles: **S3 publi
 
 ## ✨ Key Technical Features
 
-* **Hybrid DNS Delegation (.sa Domain):** Configured custom Name Server (NS) delegation records from an external local registrar (Sahara Net) to an AWS Route 53 Public Hosted Zone.
+* **Hybrid DNS Delegation (.sa Domain):** Configured custom Name Server (NS) delegation records from an external local registrar to an AWS Route 53 Public Hosted Zone.
 * **Strict S3 Security (OAC):** Configured S3 using the **REST API origin** combined with **Origin Access Control (OAC)** instead of public S3 website endpoints. "Block All Public Access" remains **100% enabled**.
 * **Global Edge Caching & Acceleration:** CloudFront distribution caches static assets globally to ensure low latency and reduced origin fetch requests.
 * **Automated HTTPS/TLS Security:** TLS 1.2/1.3 encryption managed via AWS Certificate Manager (ACM) provisioned in `us-east-1` for edge deployment.
-* **Apex Domain Routing:** Configured Route 53 `A` and `AAAA` **Alias records** to route apex domain queries (`ali-bagabas.sa`) directly to CloudFront without CNAME restrictions.
+* **Apex Domain Routing:** Configured Route 53 `A` and `AAAA` **Alias records** to route apex domain queries (`YOUR-DOMAIN.sa`) directly to CloudFront without CNAME restrictions.
 
 ---
 
@@ -106,14 +106,14 @@ The system architecture follows strict zero-trust storage principles: **S3 publi
 ### Step 1: External Domain Setup & Route 53 Delegation
 1. Purchase your domain through your registrar (you can find them here: https://nic.sa/en/registrars).
 2. Open **AWS Route 53 Console** $\rightarrow$ **Hosted zones** $\rightarrow$ **Create hosted zone**.
-3. Enter your domain name (`ali-bagabas.sa`), select **Public Hosted Zone**, and click **Create**.
+3. Enter your domain name (`YOUR-DOMAIN.sa`), select **Public Hosted Zone**, and click **Create**.
 4. Copy the 4 generated Name Server (NS) addresses (`ns-xxxx.awsdns-xx.com...`).
 5. In your third-party registrar dashboard, update your domain's custom NS records with those 4 AWS Name Servers to delegate DNS control to AWS.
 
 ### Step 2: Request SSL/TLS Certificate via ACM
 1. Open **AWS Certificate Manager (ACM)** in region **`us-east-1` (N. Virginia)** *(Note: CloudFront requires certificates to be issued in `us-east-1`)*.
 2. Click **Request Certificate** $\rightarrow$ **Request a public certificate**.
-3. Add Domain Names: `ali-bagabas.sa` and `*.ali-bagabas.sa`.
+3. Add Domain Names: `YOUR-DOMAIN.sa` and `*.YOUR-DOMAIN.sa`.
 4. Choose **DNS validation** and click **Request**.
 5. Once created, click **Create records in Route 53** inside the certificate details page to complete validation automatically.
 
@@ -129,7 +129,7 @@ The system architecture follows strict zero-trust storage principles: **S3 publi
 2. **Origin Domain:** Select your S3 bucket's **REST API endpoint** (e.g., `bucket-name.s3.amazonaws.com`).
 3. **Origin Access:** Select **Origin Access Control settings (recommended)** $\rightarrow$ **Create control setting** (Sign requests with SigV4).
 4. **Viewer Protocol Policy:** Select **Redirect HTTP to HTTPS**.
-5. **Alternate Domain Names (CNAME):** Add `ali-bagabas.sa` and `www.ali-bagabas.sa`.
+5. **Alternate Domain Names (CNAME):** Add `YOUR-DOMAIN.sa` and `www.YOUR-DOMAIN.sa`.
 6. **Custom SSL Certificate:** Select the ACM certificate created in Step 2.
 7. **Default Root Object:** Set to `index.html`.
 8. Click **Create distribution**.
@@ -138,7 +138,7 @@ The system architecture follows strict zero-trust storage principles: **S3 publi
 ### Step 5: Route 53 Alias Record Configuration
 1. Return to **Route 53 Hosted Zones** $\rightarrow$ Select your domain.
 2. Click **Create record**:
-   * **Record Name:** Leave blank (apex domain `ali-bagabas.sa`).
+   * **Record Name:** Leave blank (apex domain `YOUR-DOMAIN.sa`).
    * **Record Type:** `A - Routes traffic to an IPv4 address...`
    * **Toggle Alias:** Enabled.
    * **Route Traffic To:** Alias to CloudFront distribution $\rightarrow$ Select your distribution.
@@ -150,5 +150,5 @@ The system architecture follows strict zero-trust storage principles: **S3 publi
 
 **Ali Bagabas**
 
-* Website: [ali-bagabas.sa](https://www.google.com/search?q=https://ali-bagabas.sa)
-* LinkedIn: [Ali Bagabas](https://www.google.com/search?q=https://www.linkedin.com/in/alibagabas/)
+* Website: [ali-bagabas.sa](https://ali-bagabas.sa)
+* LinkedIn: [Ali Bagabas](https://www.linkedin.com/in/ali-bagabas/)
